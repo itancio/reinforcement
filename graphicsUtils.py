@@ -19,7 +19,6 @@ import string
 import time
 import types
 try:
-    raise ImportError('hi')
     import tkinter
 except ImportError:
     tkinter = None
