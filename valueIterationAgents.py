@@ -65,13 +65,7 @@ class ValueIterationAgent(ValueEstimationAgent):
           value iteration, V_k+1(...) depends on V_k(...)'s.
         """
         "*** YOUR CODE HERE ***"
-        # for _ in range(self.iterations):
-        #     for state in self.mdp.getStates():
-        #         optimalAction = self.getAction(state)
-        #         if optimalAction:
-        #             print("Qvalue: ", optimalAction, self.getQValue(state, optimalAction))
-        #             self.values[state] = self.getQValue(state, optimalAction)
-        for i in range(self.iterations):
+        for _ in range(self.iterations):
             offlineValues = util.Counter()
             for state in self.mdp.getStates():
                 optimalValue = -float("inf")
@@ -112,9 +106,9 @@ class ValueIterationAgent(ValueEstimationAgent):
         actions = self.mdp.getPossibleActions(state)
         if not actions:
             return None
-        optimalAction = max([[self.getQValue(state, action), action] for action in actions], 
+        optimal = max([[self.getQValue(state, action), action] for action in actions], 
                             key=lambda x: x[0])
-        return optimalAction[1]
+        return optimal[1]
 
 
     def getPolicy(self, state):
